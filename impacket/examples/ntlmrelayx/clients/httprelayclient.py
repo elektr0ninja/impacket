@@ -106,6 +106,8 @@ class HTTPRelayClient(ProtocolClient):
             return None, STATUS_ACCESS_DENIED
         else:
             LOG.info('HTTP server returned error code %d, treating as a successful login' % res.status)
+            #Print response header to expose session cookies
+            print(res.headers)
             #Cache this
             self.lastresult = res.read()
             return None, STATUS_SUCCESS
